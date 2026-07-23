@@ -24,6 +24,9 @@ jobs:
       - name: Download dependencies
         run: go mod download
 
+      - name: Generate code
+        run: make generate
+
       - name: Build
         run: go build ./...
 
