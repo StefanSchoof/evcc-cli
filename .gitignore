@@ -1,0 +1,10 @@
+bin/
+dist/
+coverage.out
+*.log
+
+# Local config
+config.yaml
+
+# generated files
+internal/gen/

@@ -1,0 +1,9 @@
+package: evccstate
+output: internal/gen/evccstate/state.gen.go
+generate:
+  models: true
+  client: false
+  strict-server: false
+  embedded-spec: false
+output-options:
+  skip-prune: true

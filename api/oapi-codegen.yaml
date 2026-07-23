@@ -1,0 +1,11 @@
+package: evccgen
+output: internal/gen/evcc/client.gen.go
+import-mapping:
+  ./openapi.state.yaml: evcc-cli/internal/gen/evccstate
+generate:
+  models: true
+  client: true
+  strict-server: false
+  embedded-spec: false
+output-options:
+  skip-prune: true
