@@ -40,7 +40,7 @@ nfpms:
     file_name_template: "{{ .ConventionalFileName }}"
     vendor: evcc-cli contributors
     homepage: https://github.com/evcc-io/evcc
-    maintainer: evcc-cli contributors <noreply@example.com>
+    maintainer: evcc-cli contributors https://github.com/StefanSchoof/evcc-cli/
     description: Command line interface for evcc
     license: MIT
     formats:
