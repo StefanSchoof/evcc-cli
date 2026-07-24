@@ -1,0 +1,4 @@
+host: https://demo.evcc.io
+timeout: 10s
+raw: false
+insecure: false
