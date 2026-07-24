@@ -5,6 +5,3 @@ coverage.out
 
 # Local config
 config.yaml
-
-# generated files
-internal/gen/
