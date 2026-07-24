@@ -6,7 +6,8 @@ OAPI_CODEGEN := $(GOBIN_PATH)/oapi-codegen
 .PHONY: tools generate tidy test build run
 
 tools:
-	go install github.com/oapi-codegen/oapi-codegen/v2/cmd/oapi-codegen@v2.4.1
+	go install github.com/oapi-codegen/oapi-codegen/v2/cmd/oapi-codegen@v2.8.0
+	go install github.com/goreleaser/goreleaser/v2@v2.17.0
 
 generate: tools
 	mkdir -p internal/gen/evcc internal/gen/evccstate

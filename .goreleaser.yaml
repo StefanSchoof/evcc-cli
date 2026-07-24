@@ -1,0 +1,64 @@
+version: 2
+
+project_name: evcc-cli
+
+before:
+  hooks:
+    - go mod tidy
+    - go test ./...
+
+builds:
+  - id: evcc
+    main: .
+    binary: evcc-cli
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+    goarch:
+      - amd64
+      - arm64
+      - arm
+    goarm:
+      - "7"
+    ldflags:
+      - -s -w
+      - -X evcc-cli/internal/buildinfo.Version={{.Version}}
+      - -X evcc-cli/internal/buildinfo.Commit={{.Commit}}
+      - -X evcc-cli/internal/buildinfo.Date={{.Date}}
+
+archives:
+  - id: binaries
+    ids:
+      - evcc
+    formats: [tar.gz]
+    name_template: "{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}"
+
+nfpms:
+  - id: deb
+    package_name: evcc-cli
+    file_name_template: "{{ .ConventionalFileName }}"
+    vendor: evcc-cli contributors
+    homepage: https://github.com/evcc-io/evcc
+    maintainer: evcc-cli contributors <noreply@example.com>
+    description: Command line interface for evcc
+    license: MIT
+    formats:
+      - deb
+    bindir: /usr/bin
+    ids:
+      - evcc
+    contents:
+      - src: ./LICENSE
+        dst: /usr/share/doc/evcc-cli/copyright
+
+checksum:
+  name_template: checksums.txt
+
+changelog:
+  use: git
+  sort: asc
+  filters:
+    exclude:
+      - "^docs:"
+      - "^test:"
